@@ -1,0 +1,94 @@
+/*Style.css SpotIFA*/
+
+body{
+ 	background-image:url(../library/background_vinyl.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: 100%;
+ 	background-color:black;
+	font-family: "arial",sans serif;
+	color:white;
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	font-weight: bolder;
+}
+
+footer{
+	opacity: 0.3;
+}
+
+
+ul {
+  position: fixed; /* Make it stick, even on scroll */
+  width: 100px;
+  height: 100%; /* Full height */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(80, 80, 120, 0.5);
+  overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 25px 25px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a.menu_bouton:hover {
+  background-color: #111;
+  width:100%;
+  border-radius: 25px;
+}
+
+.menuhome{
+}
+
+.menu_home:hover {
+  	background-color: #111;
+  	border-radius: 50px;
+}
+
+.button:link, .button:visited {
+  background-color: rgb(80, 80, 120, 0.8);;
+  color: white;
+  padding: 14px 25px;
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 25px;
+}
+
+.button:hover, .button:active {
+  background-color: rgb(100, 100, 150, 0.8);
+}
+
+#content{
+	margin-left: 100px;
+}
+
+#menu{
+	position: absolute;
+}
+
+@keyframes logo {
+  from {background-color: grey;
+	border-radius: 25px;
+	}
+  to {background-color: black;
+  	border-radius: 50px;
+  	}
+}
+
+.menu_home{
+  animation-name: logo;
+  animation-duration: 3s;
+}
