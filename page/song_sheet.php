@@ -51,7 +51,7 @@
 			echo "Release Date : ".$db_result_array['r_date']." . <br>";
 			
 			echo "<a class='button' href='artist_sheet.php?name=".$db_result_array['a_name']."'>".$db_result_array['a_name']."</a> <br>";
-
+/*
 			?>
 			<pre>
 			<?php
@@ -59,7 +59,7 @@
 			?>
 			</pre>
 			<?php
-
+*/
 		}
 
 
