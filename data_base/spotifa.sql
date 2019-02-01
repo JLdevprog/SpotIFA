@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 31 jan. 2019 à 08:38
+-- Généré le :  ven. 01 fév. 2019 à 15:49
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -33,9 +33,17 @@ CREATE TABLE IF NOT EXISTS `artists` (
   `id_artist` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `gender` varchar(50) NOT NULL,
-  `age` int(11) NOT NULL,
+  `age` date NOT NULL,
   PRIMARY KEY (`id_artist`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `artists`
+--
+
+INSERT INTO `artists` (`id_artist`, `name`, `gender`, `age`) VALUES
+(9, 'David Guetta', 'Male', '1967-11-07'),
+(10, 'Avicii', 'Male', '1989-09-08');
 
 -- --------------------------------------------------------
 
@@ -78,10 +86,19 @@ CREATE TABLE IF NOT EXISTS `songs` (
   `id_song` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `release_date` date NOT NULL,
-  `#id_artist` int(11) NOT NULL,
+  `id_artist` int(11) NOT NULL,
   PRIMARY KEY (`id_song`),
-  KEY `IDARTIST` (`#id_artist`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `IDARTIST` (`id_artist`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `songs`
+--
+
+INSERT INTO `songs` (`id_song`, `name`, `release_date`, `id_artist`) VALUES
+(2, 'Turn me On', '2011-12-14', 9),
+(3, '2 U', '2017-06-09', 9),
+(4, 'Bad', '2014-03-17', 9);
 
 -- --------------------------------------------------------
 
@@ -120,7 +137,7 @@ ALTER TABLE `playlist_content`
 -- Contraintes pour la table `songs`
 --
 ALTER TABLE `songs`
-  ADD CONSTRAINT `IDARTIST` FOREIGN KEY (`#id_artist`) REFERENCES `artists` (`id_artist`);
+  ADD CONSTRAINT `IDARTIST` FOREIGN KEY (`id_artist`) REFERENCES `artists` (`id_artist`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
