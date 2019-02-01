@@ -46,10 +46,12 @@
 		
 		while($db_result_array=mysqli_fetch_assoc($db_result)){
 
-			echo "- ".$db_result_array['s_name']."   /   ".$db_result_array['r_date']." . <br>";
-			
-			echo "<a class='button' href='artist_sheet.php?name=".$db_result_array['a_name']."'>".$db_result_array['a_name']."</a><br>";
+			echo "Song Name : ".$db_result_array['s_name']."<br>";
 
+			echo "Release Date : ".$db_result_array['r_date']." . <br>";
+			
+			echo "<a class='button' href='artist_sheet.php?name=".$db_result_array['a_name']."'>".$db_result_array['a_name']."</a> <br>";
+/*
 			?>
 			<pre>
 			<?php
@@ -57,7 +59,7 @@
 			?>
 			</pre>
 			<?php
-
+*/
 		}
 
 
