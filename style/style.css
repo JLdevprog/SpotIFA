@@ -53,8 +53,15 @@ li a.menu_bouton:hover {
 }
 
 .menu_home:hover {
+  margin:0;
   	background-color: #111;
   	border-radius: 50px;
+    border-style:solid ;
+    border-width: 1px;
+
+}
+
+.button{
 }
 
 .button:link, .button:visited {
@@ -73,6 +80,7 @@ li a.menu_bouton:hover {
 
 #content{
 	margin-left: 100px;
+  text-align: center;
 }
 
 #menu{
@@ -93,3 +101,5 @@ li a.menu_bouton:hover {
   animation-name: logo;
   animation-duration: 3s;
 }
+
+

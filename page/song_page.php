@@ -15,7 +15,7 @@
 <div id="content">
 
 	<header>
-		Artists SpotIFA
+		Songs SpotIFA
 	</header>
 
 	<hr>
@@ -29,12 +29,12 @@
 
 	$db_prt = $db_spot->query(
 		'SELECT name 
-		FROM artists
+		FROM songs
 		ORDER BY id_artist ASC'
 	);
 
 	while($data = $db_prt -> fetch()){
-                        echo "<a class='button' href='artist_sheet.php?name=".$data['name']."'>".$data['name']."</a>";
+                        echo "<a class='button' href='song_sheet.php?name=".$data['name']."'>".$data['name']."</a>";
                         echo "<hr>";
                     }
 

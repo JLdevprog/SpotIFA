@@ -15,22 +15,38 @@
 <div id="content">
 
 	<header>
-		Song Detail SpotIFA
+		Album Detail SpotIFA
 	</header>
 
 	<hr>
 
-	<p>
 
 	<?php
 
 	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
-	if (isset($_GET['song'])){
+	if (isset($_GET['name'])){
 
-		$stor_get=strip_tags($_GET['song']);
+		$stor_get=strip_tags($_GET['name']);
 		$stor_get=addslashes($stor_get);
 
+
+		$db_result=mysqli_query($connect, 'SELECT 
+			name, gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
+			 FROM artists
+			 WHERE artists.name = "'.$stor_get.'"
+			 ');
+
+
+		$db_result_array=mysqli_fetch_assoc($db_result);
+
+		echo "<p class='artist'>".$db_result_array['name']."<br>".$db_result_array['gender']."<br>".
+		$db_curage=($db_result_array['hage']-$db_result_array['YEAR(age)'])." Y.old <br>".
+		$db_result_array['age']."</p><hr>";
+
+		mysqli_free_result($db_result);
+
+		echo "<p class='text'>Last 3 single : </p>";
 
 		$db_result=mysqli_query($connect, 'SELECT artists.id_artist, 
 				artists.name as a_name, 
@@ -39,19 +55,18 @@
 				gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
 			 FROM artists
 			 INNER JOIN songs ON artists.id_artist=songs.id_artist
-			 WHERE songs.name = "'.$stor_get.'"			 
+			 WHERE artists.name = "'.$stor_get.'"			 
 			 ORDER BY r_date DESC
 			 ');
 
 		
 		while($db_result_array=mysqli_fetch_assoc($db_result)){
 
-			echo "<p class='text'> Song Name : ".$db_result_array['s_name'].
-				"<br>Release Date : ".$db_result_array['r_date']." . </p>";
+            echo "<a class='button' href='song_sheet.php?song=".$db_result_array['s_name']."'>".
+            $db_result_array['s_name']."</a>";
 
-				echo "<p class='text'>By</p>";
-			
-			echo "<a class='button' href='artist_sheet.php?name=".$db_result_array['a_name']."'>".$db_result_array['a_name']."</a> <br>";
+			echo "   /   ".$db_result_array['r_date']." . <br>";
+
 /*
 			?>
 			<pre>
@@ -62,6 +77,8 @@
 			<?php
 */
 		}
+
+		echo "<hr>";
 
 
 		mysqli_free_result($db_result);
@@ -74,7 +91,6 @@
 
 	?>
 
-	</p>
 
 
 	<footer>
