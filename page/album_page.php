@@ -28,13 +28,18 @@
                         array(PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION));
 
 	$db_prt = $db_spot->query(
-		'SELECT name 
+		'SELECT id_album, name , id_artist , release_date
+
 		FROM albums
-		ORDER BY id_artist ASC'
+		
+		ORDER BY release_date DESC'
 	);
 
 	while($data = $db_prt -> fetch()){
-                        echo "<a class='button' href='album_sheet.php?name=".$data['name']."'>".$data['name']."</a>";
+                        echo "<a class='button' href='album_sheet.php?name=".$data['id_album']."'>".$data['name']."</a>";
+
+                        echo "";
+
                         echo "<hr>";
                     }
 
