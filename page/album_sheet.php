@@ -32,31 +32,14 @@
 
 
 		$db_result=mysqli_query($connect, 'SELECT 
-			name, gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
-			 FROM artists
-			 WHERE artists.name = "'.$stor_get.'"
-			 ');
-
-
-		$db_result_array=mysqli_fetch_assoc($db_result);
-
-		echo "<p class='artist'>".$db_result_array['name']."<br>".$db_result_array['gender']."<br>".
-		$db_curage=($db_result_array['hage']-$db_result_array['YEAR(age)'])." Y.old <br>".
-		$db_result_array['age']."</p><hr>";
-
-		mysqli_free_result($db_result);
-
-		echo "<p class='text'>Last 3 single : </p>";
-
-		$db_result=mysqli_query($connect, 'SELECT artists.id_artist, 
-				artists.name as a_name, 
+				albums.id_album, 
+				albums.name as a_name, 
 				songs.name as s_name,
 				songs.release_date as r_date,
-				gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
-			 FROM artists
-			 INNER JOIN songs ON artists.id_artist=songs.id_artist
-			 WHERE artists.name = "'.$stor_get.'"			 
-			 ORDER BY r_date DESC
+				songs.id_album
+			 FROM songs
+			 INNER JOIN albums ON songs.id_album=albums.id_album
+			 WHERE songs.id_album = "'.$stor_get.'"
 			 ');
 
 		

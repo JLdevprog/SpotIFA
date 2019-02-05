@@ -57,6 +57,7 @@
 			 INNER JOIN songs ON artists.id_artist=songs.id_artist
 			 WHERE artists.name = "'.$stor_get.'"			 
 			 ORDER BY r_date DESC
+			 LIMIT 3;
 			 ');
 
 		
@@ -93,13 +94,14 @@
 			 FROM artists
 			 INNER JOIN albums ON artists.id_artist=albums.id_artist
 			 WHERE artists.name = "'.$stor_get.'"			 
-			 ORDER BY r_date DESC
+			 ORDER BY r_date DESC 
+			 LIMIT 3 OFFSET 3;
 			 ');
 
 		
 		while($db_result_array=mysqli_fetch_assoc($db_result)){
 
-            echo "<a class='button' href='album_sheet.php?song=".$db_result_array['s_name']."'>".
+            echo "<a class='button' href='album_sheet.php?song=".$db_result_array['album_name']."'>".
             $db_result_array['album_name']."</a>";
 
 			echo "   /   ".$db_result_array['r_date']." . <br>";
