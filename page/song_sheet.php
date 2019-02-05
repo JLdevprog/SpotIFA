@@ -32,7 +32,9 @@
 		$stor_get=addslashes($stor_get);
 
 
-		$db_result=mysqli_query($connect, 'SELECT artists.id_artist, 
+		$db_result=mysqli_query($connect, 
+
+			'SELECT artists.id_artist, 
 				artists.name as a_name, 
 				songs.name as s_name,
 				songs.release_date as r_date,
