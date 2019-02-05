@@ -34,7 +34,8 @@
 	);
 
 	while($data = $db_prt -> fetch()){
-                        echo "<a class='button' href='song_sheet.php?name=".$data['name']."'>".$data['name']."</a>";
+                        echo "<a class='button' href='song_sheet.php?song=".
+                        $data['name']."'>".$data['name']."</a>";
                         echo "<hr>";
                     }
 

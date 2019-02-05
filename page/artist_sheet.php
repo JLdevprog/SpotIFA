@@ -57,7 +57,7 @@
 			 INNER JOIN songs ON artists.id_artist=songs.id_artist
 			 WHERE artists.name = "'.$stor_get.'"			 
 			 ORDER BY r_date DESC
-			 LIMIT 3;
+			 LIMIT 3
 			 ');
 
 		
@@ -86,23 +86,28 @@
 
 		echo "<p class='text'>All Albums : </p>";
 
-		$db_result=mysqli_query($connect, 'SELECT artists.id_artist, 
-				artists.name as a_name, 
+		$db_result=mysqli_query($connect, 
+
+			'SELECT artists.id_artist, 
+				artists.name as a_name,
+
+				albums.id_album as id_album,
 				albums.name as album_name,
 				albums.release_date as r_date,
+
 				gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
+
 			 FROM artists
 			 INNER JOIN albums ON artists.id_artist=albums.id_artist
 			 WHERE artists.name = "'.$stor_get.'"			 
 			 ORDER BY r_date DESC 
-			 LIMIT 3 OFFSET 3;
 			 ');
 
 		
 		while($db_result_array=mysqli_fetch_assoc($db_result)){
 
-            echo "<a class='button' href='album_sheet.php?song=".$db_result_array['album_name']."'>".
-            $db_result_array['album_name']."</a>";
+            echo "<a class='button' href='album_sheet.php?name=".
+            $db_result_array['id_album']."'>".$db_result_array['album_name']."</a>";
 
 			echo "   /   ".$db_result_array['r_date']." . <br>";
 
