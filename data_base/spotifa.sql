@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 01 fév. 2019 à 15:49
+-- Généré le :  mar. 05 fév. 2019 à 15:50
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `spotifa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `albums`
+--
+
+DROP TABLE IF EXISTS `albums`;
+CREATE TABLE IF NOT EXISTS `albums` (
+  `id_album` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `release_date` date NOT NULL,
+  `id_artist` int(11) NOT NULL,
+  PRIMARY KEY (`id_album`),
+  KEY `IDARTISTALBUM` (`id_artist`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `albums`
+--
+
+INSERT INTO `albums` (`id_album`, `name`, `release_date`, `id_artist`) VALUES
+(2, 'Nothing but the Beat', '2011-08-26', 9),
+(3, 'True', '2016-09-16', 10);
 
 -- --------------------------------------------------------
 
@@ -86,19 +110,38 @@ CREATE TABLE IF NOT EXISTS `songs` (
   `id_song` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `release_date` date NOT NULL,
-  `id_artist` int(11) NOT NULL,
+  `id_artist` int(11) DEFAULT NULL,
+  `id_album` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_song`),
-  KEY `IDARTIST` (`id_artist`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  KEY `IDALBUM` (`id_album`),
+  KEY `IDARTIST` (`id_artist`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `songs`
 --
 
-INSERT INTO `songs` (`id_song`, `name`, `release_date`, `id_artist`) VALUES
-(2, 'Turn me On', '2011-12-14', 9),
-(3, '2 U', '2017-06-09', 9),
-(4, 'Bad', '2014-03-17', 9);
+INSERT INTO `songs` (`id_song`, `name`, `release_date`, `id_artist`, `id_album`) VALUES
+(2, 'Turn me On', '2011-12-14', 9, 2),
+(3, '2 U', '2017-06-09', 9, NULL),
+(4, 'Bad', '2014-03-17', 9, NULL),
+(5, 'Wake me up!', '2016-09-16', 10, 3),
+(6, 'You Make me', '2016-09-16', 10, 3),
+(7, 'Hey Brother', '2016-09-16', 10, 3),
+(8, 'Addicted to you', '2016-09-16', 10, 3),
+(9, 'Dear Boy', '2016-09-16', 10, 3),
+(10, 'Liar liar', '2016-09-16', 10, 3),
+(11, 'Shame on me', '2016-09-16', 10, 3),
+(12, 'Lay me down', '2016-09-16', 10, 3),
+(13, 'Hope there\'s Someone', '2016-09-16', 10, 3),
+(14, 'Heart upon my sleeve', '2016-09-16', 10, 3),
+(15, 'All you need is Love', '2016-09-16', 10, 3),
+(16, 'Always on the run', '2016-09-16', 10, 3),
+(17, 'Canyons', '2016-09-16', 10, 3),
+(18, 'Edom', '2016-09-16', 10, 3),
+(19, 'Long Road to Hell', '2016-09-16', 10, 3),
+(20, 'Levels', '2016-09-16', 10, 3),
+(21, 'Flames', '2019-02-05', 9, NULL);
 
 -- --------------------------------------------------------
 
@@ -121,6 +164,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 --
+-- Contraintes pour la table `albums`
+--
+ALTER TABLE `albums`
+  ADD CONSTRAINT `IDARTISTALBUM` FOREIGN KEY (`id_artist`) REFERENCES `artists` (`id_artist`);
+
+--
 -- Contraintes pour la table `playlists`
 --
 ALTER TABLE `playlists`
@@ -137,7 +186,7 @@ ALTER TABLE `playlist_content`
 -- Contraintes pour la table `songs`
 --
 ALTER TABLE `songs`
-  ADD CONSTRAINT `IDARTIST` FOREIGN KEY (`id_artist`) REFERENCES `artists` (`id_artist`);
+  ADD CONSTRAINT `IDALBUM` FOREIGN KEY (`id_album`) REFERENCES `albums` (`id_album`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
