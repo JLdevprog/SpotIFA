@@ -87,19 +87,31 @@ li a.menu_bouton:hover {
 	position: absolute;
 }
 
+
+
+#menu_home {
+  background:url(../library/logo.png) no-repeat;
+  animation-name: logo;   
+  animation: logo 1s linear 0s;
+}
+
+#menu_home:hover{
+  /*animation-play-state: paused;*/
+  background-color: #111;
+}    
+
 @keyframes logo {
-  from {background-color: grey;
-	border-radius: 25px;
-	}
-  to {background-color: black;
-  	border-radius: 50px;
-  	}
-}
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+    from {background-color: grey;
+          border-radius: 60px;}
+    to {background-color: black;
+      border-radius: 60px;}
+    }
 
-.menu_home{
-	background:url(../library/logo.png) no-repeat;
-  animation-name: logo;
-  animation-duration: 3s;
+.pic_profil{
+  width: auto; 
+  height: 300px; 
+  border-radius: 250px;
 }
-
 

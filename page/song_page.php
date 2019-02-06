@@ -41,7 +41,6 @@
 	);
 
 	while($data = $db_prt -> fetch()){
-		echo "Title ";
         echo "<a class='button' href='song_sheet.php?song=".
         $data['s_name']."'>".$data['s_name']."</a>";
         echo " By ";
