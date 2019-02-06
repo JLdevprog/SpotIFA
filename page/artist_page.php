@@ -15,7 +15,8 @@
 <div id="content">
 
 	<header>
-		Artists SpotIFA
+		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<br>Artists
 	</header>
 
 	<hr>
