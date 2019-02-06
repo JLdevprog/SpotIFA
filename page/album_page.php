@@ -65,7 +65,7 @@
 		echo "<hr>";
 
 			echo "<a class='button' href='album_sheet.php?name="
-			.$db_result_array['id_album']."'>".$db_result_array['album_name']."</a>";
+			.$db_result_array['id_album']."'>".$db_result_array['album_name']."</a><br>";
 
 			echo "<br>";
 

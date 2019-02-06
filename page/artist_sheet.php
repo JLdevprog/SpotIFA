@@ -33,7 +33,7 @@
 
 
 		$db_result=mysqli_query($connect, 'SELECT 
-			name, gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
+			id_artist, name, gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
 			 FROM artists
 			 WHERE artists.name = "'.$stor_get.'"
 			 ');
@@ -43,9 +43,17 @@
 
 		echo "<p class='artist'>".$db_result_array['name']."<br>".$db_result_array['gender']."<br>".
 		$db_curage=($db_result_array['hage']-$db_result_array['YEAR(age)'])." Y.old <br>".
-		$db_result_array['age']."</p><hr>";
+		$db_result_array['age']."</p>";
+
+		echo "<img class='pic_profil'
+			src='/SpotIFA/library/".$db_result_array['id_artist'].".jpg'>";
+
+		echo "<hr>";
 
 		mysqli_free_result($db_result);
+
+
+
 
 		echo "<p class='text'>Last 3 single : </p>";
 
