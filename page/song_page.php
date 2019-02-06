@@ -15,7 +15,8 @@
 <div id="content">
 
 	<header>
-		Songs SpotIFA
+		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<br>Songs
 	</header>
 
 	<hr>
@@ -30,7 +31,7 @@
 	$db_prt = $db_spot->query(
 		'SELECT name 
 		FROM songs
-		ORDER BY id_artist ASC'
+		ORDER BY name ASC'
 	);
 
 	while($data = $db_prt -> fetch()){

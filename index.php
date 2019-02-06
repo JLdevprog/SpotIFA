@@ -15,7 +15,7 @@
 <div id="content">
 
 	<header>
-		SpotIFA Home
+		<img src="/SpotIFA/library/SpotIFA_logo.png" >
 	</header>
 
 	<?php

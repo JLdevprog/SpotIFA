@@ -15,7 +15,8 @@
 <div id="content">
 
 	<header>
-		Song Detail SpotIFA
+		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<br>Song Detail
 	</header>
 
 	<hr>
