@@ -29,16 +29,26 @@
                         array(PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION));
 
 	$db_prt = $db_spot->query(
-		'SELECT name 
+		'SELECT 
+		songs.name as s_name,
+		artists.name as a_name
+
 		FROM songs
-		ORDER BY name ASC'
+
+		INNER JOIN artists ON songs.id_artist=artists.id_artist
+
+		ORDER BY songs.name ASC'
 	);
 
 	while($data = $db_prt -> fetch()){
-                        echo "<a class='button' href='song_sheet.php?song=".
-                        $data['name']."'>".$data['name']."</a>";
-                        echo "<hr>";
-                    }
+		echo "Title ";
+        echo "<a class='button' href='song_sheet.php?song=".
+        $data['s_name']."'>".$data['s_name']."</a>";
+        echo " By ";
+        echo "<a class='button' href='artist_sheet.php?name=".
+        $data['a_name']."'>".$data['a_name']."</a>";
+        echo "<hr>";
+    }
 
 	?>
 

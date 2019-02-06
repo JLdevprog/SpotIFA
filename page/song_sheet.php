@@ -39,7 +39,7 @@
 				artists.name as a_name, 
 				songs.name as s_name,
 				songs.release_date as r_date,
-				gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
+				songs.id_album as album
 			 FROM artists
 			 INNER JOIN songs ON artists.id_artist=songs.id_artist
 			 WHERE songs.name = "'.$stor_get.'"			 
@@ -52,9 +52,10 @@
 			echo "<p class='text'> Song Name : ".$db_result_array['s_name'].
 				"<br>Release Date : ".$db_result_array['r_date']." . </p>";
 
-				echo "<p class='text'>By</p>";
+			echo "<p class='text'>By</p>";
 			
 			echo "<a class='button' href='artist_sheet.php?name=".$db_result_array['a_name']."'>".$db_result_array['a_name']."</a> <br>";
+
 /*
 			?>
 			<pre>
@@ -64,6 +65,34 @@
 			</pre>
 			<?php
 */
+		}
+
+		$db_result_album=mysqli_query($connect, 
+
+			'SELECT 
+				albums.id_album as id_album, 
+				albums.name as a_name, 
+				songs.name as s_name,
+				songs.release_date as r_date,
+				songs.id_album as song_id_album
+			 FROM albums
+			 INNER JOIN songs ON albums.id_artist=songs.id_artist
+			 WHERE songs.name = "'.$stor_get.'"
+			 ');
+
+		while($db_result_array=mysqli_fetch_assoc($db_result_album)){
+
+			echo "<p class='text'>From</p>";
+
+			if($db_result_array['song_id_album']==$db_result_array['id_album']){
+
+				echo "<a class='button' href='album_sheet.php?name=".$db_result_array['song_id_album']."'>".$db_result_array['a_name']."</a> <br>";
+			}
+
+			else{
+				echo "<p class='text'>a Single</p>";
+			}
+
 		}
 
 
