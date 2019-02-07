@@ -9,9 +9,8 @@ But for some reason of Study Exercise Report the second part will be in French.
 
 
 
-This Project will be Develop for Study purpose "HTML/CSS/PHP/SQL"
-
-and is Free of Rights.
+This Project will be Develop for Study purpose in different code language "HTML/CSS/PHP/SQL"
+and is Free of Rights for no commercial use.
 
 
 
