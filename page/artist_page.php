@@ -16,12 +16,19 @@
 
 	<header>
 		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
-		<br>Artists
+		<<h3>Artists</h3>
 	</header>
+
+
+	<form class="search_bar" action="/SpotIFA/page/artist_sheet.php">
+	  <input type="search" id="search" name="name" placeholder="Name">
+	  <input type="submit" value="Submit">
+	</form>
 
 	<hr>
 
 	<p>
+
 
 	<?php
 

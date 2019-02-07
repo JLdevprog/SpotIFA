@@ -16,7 +16,7 @@
 
 	<header>
 		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
-		<br>Artits Detail
+		<h3>Artits Detail</h3>
 	</header>
 
 	<hr>

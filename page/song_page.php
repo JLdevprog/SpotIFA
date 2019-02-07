@@ -16,8 +16,13 @@
 
 	<header>
 		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
-		<br>Songs
+		<h3>Songs</h3>
 	</header>
+
+	<form action="/SpotIFA/page/song_sheet.php">
+	  <input type="search" id="search" name="song" placeholder="Title">
+	  <input type="submit" value="Submit">
+	</form>
 
 	<hr>
 
@@ -41,11 +46,13 @@
 	);
 
 	while($data = $db_prt -> fetch()){
+		echo "<br>";
         echo "<a class='button' href='song_sheet.php?song=".
         $data['s_name']."'>".$data['s_name']."</a>";
         echo " By ";
         echo "<a class='button' href='artist_sheet.php?name=".
         $data['a_name']."'>".$data['a_name']."</a>";
+        echo "<br><br>";
         echo "<hr>";
     }
 
