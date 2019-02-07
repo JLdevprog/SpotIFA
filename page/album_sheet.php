@@ -16,8 +16,40 @@
 
 	<header>
 		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
-		<br>Album Detail
+		<h3>Album Detail</h3>
 	</header>
+
+	<br>
+
+	<?php
+
+	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+
+	if (isset($_GET['name'])){
+
+		$stor_get=strip_tags($_GET['name']);
+		$stor_get=addslashes($stor_get);
+
+
+		$db_result=mysqli_query($connect, '
+			SELECT 
+			id_album,
+			name
+			FROM albums
+			WHERE id_album="'.$stor_get.'"
+			');
+
+		
+		while($db_result_array=mysqli_fetch_assoc($db_result)){
+
+            echo "<a class='button' href='album_sheet.php?name=".
+            $db_result_array['id_album']."'>".$db_result_array['name']."</a>";
+
+		}
+	}
+
+		mysqli_free_result($db_result);
+?>
 
 	<hr>
 

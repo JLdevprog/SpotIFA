@@ -16,7 +16,7 @@
 
 	<header>
 		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
-		<br>Song Detail
+		<h3>Song Detail</h3>
 	</header>
 
 	<hr>
@@ -56,6 +56,8 @@
 			
 			echo "<a class='button' href='artist_sheet.php?name=".$db_result_array['a_name']."'>".$db_result_array['a_name']."</a> <br>";
 
+
+
 /*
 			?>
 			<pre>
@@ -66,6 +68,7 @@
 			<?php
 */
 		}
+
 
 		$db_result_album=mysqli_query($connect, 
 
@@ -82,15 +85,15 @@
 
 		while($db_result_array=mysqli_fetch_assoc($db_result_album)){
 
-			echo "<p class='text'>From</p>";
 
 			if($db_result_array['song_id_album']==$db_result_array['id_album']){
+
+			echo "<p class='text'>From</p>";
 
 				echo "<a class='button' href='album_sheet.php?name=".$db_result_array['song_id_album']."'>".$db_result_array['a_name']."</a> <br>";
 			}
 
 			else{
-				echo "<p class='text'>a Single</p>";
 			}
 
 		}

@@ -1,4 +1,4 @@
-/*Style.css SpotIFA*/
+/*Style.css SpotIFA 2 */
 
 body{
  	background-image:url(../library/background_vinyl.jpg);
@@ -121,13 +121,6 @@ li a.menu_bouton:hover {
   border-radius: 250px;
 }
 
-input[type=button], input[type=submit], input[type=reset] {
-  background-color: rgb(80, 80, 120, 0.8);
-  border: none;
-  color: white;
-  padding: 12px 12px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 30px;
-}
+
+/*Test Grid*/
+
