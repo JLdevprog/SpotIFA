@@ -32,7 +32,8 @@
 		$stor_get=addslashes($stor_get);
 
 
-		$db_result=mysqli_query($connect, 'SELECT 
+		$db_result=mysqli_query($connect, 
+			'SELECT 
 			id_artist, name, gender, age, YEAR(age), YEAR(CURRENT_TIMESTAMP) as hage
 			 FROM artists
 			 WHERE artists.name = "'.$stor_get.'"
