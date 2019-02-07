@@ -29,10 +29,6 @@
 
 
 	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
-/*
-	Merci "Remy" DevWeb1 IFAtech2019 
-	For Select and Print the song title under The Concern Album.
-*/
 
 
 	$db_result_song=mysqli_query($connect,
@@ -63,6 +59,12 @@
 		if($temp!=$db_result_array['id_album'] || $temp==0){
 
 		echo "<hr>";
+
+		/*
+			Thank "Remi" DevWeb1 IFAtech2019 
+			For Select and Print the song title under The Concern Album
+			and not as previous result Album/Song list.
+		*/
 
 			echo "<a class='button' href='album_sheet.php?name="
 			.$db_result_array['id_album']."'>".$db_result_array['album_name']."</a><br>";

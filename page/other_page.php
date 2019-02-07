@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Other</title>
-	<link rel="stylesheet" href="../style/style2.css">
+	<link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
@@ -20,6 +20,16 @@
 		<hr>
 	</header>
 
+
+	<h4>Welcome to the News:</h4>
+
+	<p>
+		05/02/2019<br>We add the Other Page?!
+	</p>
+
+	<p>
+		07/02/2019<br>Log Page in Development ...
+	</p>
 
 	<?php
 
