@@ -31,9 +31,10 @@ session_start();
 
 
 	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
-	
 
-	if (isset($_POST['user_log']) && isset($_POST['psw_log'])){
+
+	if (isset($_POST['user_log']) && isset($_POST['psw_log'])
+		||$_SESSION['user']&&$_SESSION['pass']){
 
 		$stor_user=strip_tags($_POST['user_log']);
 		$stor_user=addslashes($stor_user);
@@ -52,7 +53,7 @@ session_start();
 		
 		while($db_result_array=mysqli_fetch_assoc($db_result)){
 
-            
+            /*
 			?>
 			<pre>
 			<?php
@@ -60,19 +61,28 @@ session_start();
 			?>
 			</pre>
 			<?php
+			*/
 
 
 			$_SESSION['user']=$stor_user;
 			$_SESSION['pass']=$stor_pass;
+			$_SESSION['id']=$db_result_array['ref_user'];
+
+
+			echo "Pseudo : "	.$_SESSION['user']."<br>";
+			echo "eM@il : "		.$db_result_array['mail']."<br>";
+			echo "address : "	.$db_result_array['address']."<br>";
+			echo "phone : "		.$db_result_array['phone']."<br>";
+			echo "Ref_User : "	.$_SESSION['id'];
+
 
 		}
 
-		echo "<hr>";
 
 	} 
 
 	else {
-		header('Location: ../index.php');
+		
 	}
 
 
