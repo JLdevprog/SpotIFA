@@ -20,7 +20,7 @@
 	</header>
 
 
-	<form action="profile_sheet.php" method="post">
+	<form action="register_sheet.php" method="post">
 
 		<div class="imgcontainer">
 		    <img src="/SpotIFA/library/register.png" height="80" width="80" >

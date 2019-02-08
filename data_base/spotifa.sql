@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 05 fév. 2019 à 15:50
+-- Généré le :  jeu. 07 fév. 2019 à 15:53
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `albums` (
   `id_artist` int(11) NOT NULL,
   PRIMARY KEY (`id_album`),
   KEY `IDARTISTALBUM` (`id_artist`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `albums`
@@ -44,7 +44,9 @@ CREATE TABLE IF NOT EXISTS `albums` (
 
 INSERT INTO `albums` (`id_album`, `name`, `release_date`, `id_artist`) VALUES
 (2, 'Nothing but the Beat', '2011-08-26', 9),
-(3, 'True', '2016-09-16', 10);
+(3, 'True', '2016-09-16', 10),
+(4, 'Bylaw', '2018-10-19', 11),
+(5, '7', '2018-09-14', 9);
 
 -- --------------------------------------------------------
 
@@ -59,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `artists` (
   `gender` varchar(50) NOT NULL,
   `age` date NOT NULL,
   PRIMARY KEY (`id_artist`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `artists`
@@ -67,7 +69,9 @@ CREATE TABLE IF NOT EXISTS `artists` (
 
 INSERT INTO `artists` (`id_artist`, `name`, `gender`, `age`) VALUES
 (9, 'David Guetta', 'Male', '1967-11-07'),
-(10, 'Avicii', 'Male', '1989-09-08');
+(10, 'Avicii', 'Male', '1989-09-08'),
+(11, 'Martin Garrix', 'Male', '1996-05-14'),
+(12, 'Miss K8', 'Female', '2000-01-01');
 
 -- --------------------------------------------------------
 
@@ -115,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `songs` (
   PRIMARY KEY (`id_song`),
   KEY `IDALBUM` (`id_album`),
   KEY `IDARTIST` (`id_artist`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `songs`
@@ -123,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `songs` (
 
 INSERT INTO `songs` (`id_song`, `name`, `release_date`, `id_artist`, `id_album`) VALUES
 (2, 'Turn me On', '2011-12-14', 9, 2),
-(3, '2 U', '2017-06-09', 9, NULL),
+(3, '2 U', '2017-06-09', 9, 5),
 (4, 'Bad', '2014-03-17', 9, NULL),
 (5, 'Wake me up!', '2016-09-16', 10, 3),
 (6, 'You Make me', '2016-09-16', 10, 3),
@@ -141,7 +145,39 @@ INSERT INTO `songs` (`id_song`, `name`, `release_date`, `id_artist`, `id_album`)
 (18, 'Edom', '2016-09-16', 10, 3),
 (19, 'Long Road to Hell', '2016-09-16', 10, 3),
 (20, 'Levels', '2016-09-16', 10, 3),
-(21, 'Flames', '2019-02-05', 9, NULL);
+(21, 'Flames', '2019-02-05', 9, NULL),
+(22, 'Where them girls at', '2011-05-02', 9, 2),
+(23, 'Little Bad girl', '2011-06-27', 9, 2),
+(24, 'Sweat', '2011-03-04', 9, 2),
+(25, 'Without You', '2011-09-27', 9, 2),
+(26, 'Nothing really matters', '2011-06-12', 9, 2),
+(27, 'I can only Imagine', '2011-05-04', 9, 2),
+(28, 'Crank it up', '2011-06-12', 9, 2),
+(29, 'I just Wanna F***', '2011-06-12', 9, 2),
+(30, 'Night of your Life', '2011-06-12', 9, 2),
+(31, 'Repeat', '2011-06-12', 9, 2),
+(32, 'Titanium', '2011-12-09', 9, 2),
+(33, 'Halucin8', '2012-05-07', 12, NULL),
+(34, 'Animals', '2013-06-01', 11, NULL),
+(35, 'Breach', '2018-10-15', 11, 4),
+(36, 'Yottabyte', '2018-10-16', 11, 4),
+(37, 'Latency', '2018-10-17', 11, 4),
+(38, 'Access', '2018-10-18', 11, 4),
+(39, 'Waiting For Tomorrow', '2018-10-19', 11, 4),
+(40, 'Don\'t Leave me alone', '2018-09-14', 9, 5),
+(41, 'Battle ', '2018-09-14', 9, 5),
+(42, '	Flames ', '2018-09-14', 9, 5),
+(43, 'Blame It on Love', '2018-09-14', 9, 5),
+(44, 'Say My Name', '2018-09-14', 9, 5),
+(45, 'Goodbye', '2018-09-14', 9, 5),
+(46, 'I\'m That Bitch', '2018-09-14', 9, 5),
+(47, 'Like I do', '2018-09-14', 9, 5),
+(48, 'She Knows How to Love Me ', '2018-09-14', 9, 5),
+(49, 'Motto ', '2018-09-14', 9, 5),
+(50, 'Drive  ', '2018-09-14', 9, 5),
+(51, 'Para Que Te Quedes', '2018-09-14', 9, 5),
+(52, 'Let It Be Me', '2018-09-14', 9, 5),
+(53, 'Light Headed ', '2018-09-14', 9, 5);
 
 -- --------------------------------------------------------
 
@@ -152,12 +188,22 @@ INSERT INTO `songs` (`id_song`, `name`, `release_date`, `id_artist`, `id_album`)
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `ref_user` int(11) NOT NULL AUTO_INCREMENT,
-  `pseudo` varchar(80) NOT NULL,
-  `address` varchar(250) NOT NULL,
+  `username` varchar(80) NOT NULL,
   `mail` varchar(250) NOT NULL,
+  `address` varchar(250) NOT NULL,
   `phone` int(11) NOT NULL,
+  `password` varchar(250) NOT NULL,
   PRIMARY KEY (`ref_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`ref_user`, `username`, `mail`, `address`, `phone`, `password`) VALUES
+(1, 'Admin', 'Admin@mail.com', '1 Worlwide Street, Earth', 102030405, 'Admin.123'),
+(2, 'User', 'user@mail.com', '123 street, World', 102030405, '123'),
+(3, 'User1', 'user@mail.com', '123 street, World', 102030405, '12345');
 
 --
 -- Contraintes pour les tables déchargées
