@@ -26,18 +26,8 @@ session_start();
 
 print_r($_SESSION);
 
-if($_SESSION['user'] && $_SESSION['pass']){
+if($_SESSION==NULL){
 
-	echo "You Al'Ready Log ?!";
-	echo "<a href='logout.php' >Logout</a>";
-
-}
-
-
-else{
-
-
-	$_SESSION['user_log']=NULL;
 
 	echo '<div id="content">
 
@@ -70,9 +60,18 @@ else{
 
 		<a id="register" href="register_page.php">Register</a>';
 
+	
 }
 
 
+else{
+
+	echo "You Al'Ready Log ?!";
+	echo "<a href='logout.php' >Logout</a>";
+
+	//header('location:"/profile_sheet.php"'); 
+
+}
 
 
 ?>
