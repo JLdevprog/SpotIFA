@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Other</title>
+	<title>SpotIFA</title>
 	<link rel="stylesheet" href="../style/style.css">
 </head>
 

@@ -1,10 +1,16 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPEhtml>
 
 <html lang="eng">
 
 <head>
 	<meta charset="utf-8">
-	<title>Other</title>
+	<title>SpotIFA</title>
 	<link rel="stylesheet" href="../style/style.css">
 </head>
 
@@ -16,72 +22,107 @@
 
 	<header>
 		<img src="../library/SpotIFA_logo.png" width="500" height="auto" >
-		<h3>Welcome</h3>
+		<h3>Profile</h3>
 		<hr>
 	</header>
 
 
 	<?php
 
-	$user=$_POST['username'];
-	$email=$_POST['email'];
-	$address=$_POST['address'];
-	$phone=$_POST['phone'];
-	$password=$_POST['password'];
-	$valid=$_POST['v'];
 
+	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+	
 
-		$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+	if (isset($_POST['user_log']) && isset($_POST['psw_log'])){
 
-
-		$stor_user=strip_tags($_POST['username']);
+		$stor_user=strip_tags($_POST['user_log']);
 		$stor_user=addslashes($stor_user);
 
-		$stor_mail=strip_tags($_POST['email']);
-		$stor_mail=addslashes($stor_mail);
-
-		$stor_address=strip_tags($_POST['address']);
-		$stor_address=addslashes($stor_address);
-
-		$stor_phone=strip_tags($_POST['phone']);
-		$stor_phone=addslashes($stor_phone);
-
-		$stor_password=strip_tags($_POST['password']);
-		$stor_password=addslashes($stor_password);
-
-		$stor_v=strip_tags($_POST['v']);
-		$stor_v=addslashes($stor_v);
+		$stor_pass=strip_tags($_POST['psw_log']);
+		$stor_pass=addslashes($stor_pass);
 
 
-		$sql_w="
-		INSERT INTO users (ref_user, username, mail, address, phone, password)
-		VALUES (NULL, '".$stor_user."', '".$stor_mail."','".$stor_address."','".$stor_phone."',
-		'".$stor_password."'
-		)";
+		$db_result=mysqli_query($connect, '
+			SELECT 
+				*
+			 FROM users
+			 WHERE username = "'.$stor_user.'" AND password = "'.$stor_pass.'"
+			 ');
+
+		
+		while($db_result_array=mysqli_fetch_assoc($db_result)){
+
+            
+			?>
+			<pre>
+			<?php
+			print_r($db_result_array);
+			?>
+			</pre>
+			<?php
 
 
-		if (!$connect) {
-		    die("Connection failed: " . mysqli_connect_error());
+			$_SESSION['user']=$stor_user;
+			$_SESSION['pass']=$stor_pass;
+
 		}
 
-		if (mysqli_query($connect, $sql_w)) {
-		    echo "New Log created<br>";
+		echo "<hr>";
 
-			echo "<strong>".$user."</strong><br>You are now Register<br>";
+	} 
 
-			echo "<strong>".$valid."</strong>";
-
-		} 
-
-		else {
-		    echo "Error: " . $sql_w . "<br>" . mysqli_error($connect);
-		}
+	else {
+		header('Location: ../index.php');
+	}
 
 
-		mysqli_close($connect);
+	mysqli_free_result($db_result);
+
+	mysqli_close($connect);
 
 
 
+/*
+	$user_log=0;
+	$psw_log=0;
+
+
+
+	if($_POST||$_SESSION){
+
+		$user_log=$_POST['user_log'];
+		$psw_log=$_POST['psw_log'];
+
+
+			$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+
+
+			$sql_l=mysqli_query($connect, "
+			SELECT
+			ref_user, username, password,
+			mail, address, phone, 
+			FROM
+			users
+			WHERE username='".$user_log."' "AND" password='".$psw_log."'
+			");
+
+
+			while($db_log_array=mysqli_fetch_assoc($sql_l)){
+
+				echo "test";
+
+			}
+
+
+
+	}
+
+	else{
+		echo "Error?!";
+	}
+
+	mysqli_close($connect);
+*/
 	?>
 
 

@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPEhtml>
 
 <html lang="eng">
@@ -12,36 +18,64 @@
 
 <?php require "../menu/menu.html"; ?>
 
-<div id="content">
-
-	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
-		<h3>log Page</h3>
-	</header>
 
 
-	<form action="log_page.php">
+<?php 
 
-		<div class="imgcontainer">
-		    <img src="/SpotIFA/library/loger.png" height="80" width="80" >
-		</div>
 
-		<label>Sign In</label>
 
-		<div class="container">
-		    <input type="text" placeholder="User" name="uname" required>
-		</div>
+print_r($_SESSION);
 
-		<div>
-		    <input type="password" placeholder="Password" name="psw" required>
-		</div>
+if($_SESSION['user'] && $_SESSION['pass']){
 
-		<div>
-	    	<button type="submit">Login</button>
-	  	</div>
-	</form>
+	echo "You Al'Ready Log ?!";
+	echo "<a href='logout.php' >Logout</a>";
 
-	<a id="register" href="register_page.php">Register</a>
+}
+
+
+else{
+
+
+	$_SESSION['user_log']=NULL;
+
+	echo '<div id="content">
+
+		<header>
+			<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+			<h3>log Page</h3>
+		</header>
+
+
+		<form action="profile_sheet.php" method="post">
+
+			<div class="imgcontainer">
+			    <img src="/SpotIFA/library/loger.png" height="80" width="80" >
+			</div>
+
+			<label>Sign In</label>
+
+			<div class="container">
+			    <input type="text" placeholder="User" name="user_log" required>
+			</div>
+
+			<div>
+			    <input type="password" placeholder="Password" name="psw_log" required>
+			</div>
+
+			<div>
+		    	<button type="submit">Login</button>
+		  	</div>
+		</form>
+
+		<a id="register" href="register_page.php">Register</a>';
+
+}
+
+
+
+
+?>
 
 	<footer>
 		"J.L.DevProg"
