@@ -10,16 +10,16 @@
 
 <body>
 
-<?php require "../menu/menu.html"; ?>
+<?php require "../menu/menu_pages.html"; ?>
 
 <div id="content">
 
 	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<img src="../library/spotifa_logo.png" width="180" height="60">
 		<h3>Songs</h3>
 	</header>
 
-	<form action="/SpotIFA/page/song_sheet.php">
+	<form action="./song_sheet.php">
 	  <input type="search" id="search" name="song" placeholder="Title">
 	  <input type="submit" value="Submit">
 	</form>

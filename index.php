@@ -15,7 +15,7 @@
 <div id="content">
 
 	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" >
+		<img src="./library/spotifa_logo.png" >
 	</header>
 	
 

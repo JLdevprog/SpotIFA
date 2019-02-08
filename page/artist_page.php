@@ -10,17 +10,17 @@
 
 <body>
 
-<?php require "../menu/menu.html"; ?>
+<?php require "../menu/menu_pages.html"; ?>
 
 <div id="content">
 
 	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<img src="../library/spotifa_logo.png" width="180" height="60">
 		<<h3>Artists</h3>
 	</header>
 
 
-	<form class="search_bar" action="/SpotIFA/page/artist_sheet.php">
+	<form class="search_bar" action="./artist_sheet.php">
 	  <input type="search" id="search" name="name" placeholder="Name">
 	  <input type="submit" value="Submit">
 	</form>

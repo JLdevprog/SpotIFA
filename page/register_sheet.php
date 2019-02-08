@@ -16,7 +16,7 @@ session_start();
 
 <body>
 
-<?php require "../menu/menu.html"; ?>
+<?php require "../menu/menu_pages.html"; ?>
 
 <div id="content">
 
