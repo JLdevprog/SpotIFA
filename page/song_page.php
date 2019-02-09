@@ -30,11 +30,11 @@
 
 	<?php
 
-	$db_spot = new PDO('mysql:host=localhost;dbname=SpotIFA','root',''/* or 'root'*/,
-                        array(PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION));
+	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
-	$db_prt = $db_spot->query(
+	$db_prt = mysqli_query($connect, 
 		'SELECT 
+		songs.id_song as id_song,
 		songs.name as s_name,
 		artists.name as a_name
 
@@ -45,8 +45,37 @@
 		ORDER BY songs.name ASC'
 	);
 
-	while($data = $db_prt -> fetch()){
+	$db_like = mysqli_query($connect, 
+			'
+			SELECT 
+			likes.ref_user as like_ref_user,
+			likes.id_song as like_id_song,
+
+			songs.id_song as id_song,
+			songs.name as s_name,
+			artists.name as a_name
+
+			FROM likes
+
+			INNER JOIN users ON likes.ref_user=users.ref_user
+			INNER JOIN songs ON likes.id_song=songs.id_song
+			INNER JOIN artists ON songs.id_artist=artists.id_artist
+			'
+		);
+
+
+	while($data=mysqli_fetch_assoc($db_prt)){
 		echo "<br>";
+
+
+		if($data['id_song']){
+			echo "<a class='button_like' ><img src='/SpotIFA/library/heartbeat.png' height='35' width='35' ></a>";
+		}
+
+		else{
+			echo "<a class='button_alike' ><img src='/SpotIFA/library/heartbeat(1).png' height='35' width='35' ></a>";
+		}
+
         echo "<a class='button' href='song_sheet.php?song=".
         $data['s_name']."'>".$data['s_name']."</a>";
         echo " By ";
@@ -55,6 +84,22 @@
         echo "<br><br>";
         echo "<hr>";
     }
+
+    mysqli_free_result($db_prt);
+
+    while($data=mysqli_fetch_assoc($db_like)){
+    	?>
+			<pre>
+			<?php
+			print_r($data);
+			?>
+			</pre>
+			<?php
+    }
+
+    mysqli_free_result($db_like);
+
+    mysqli_close($connect);
 
 	?>
 
