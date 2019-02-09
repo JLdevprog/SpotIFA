@@ -24,11 +24,19 @@
 	<h4>Welcome to the News:</h4>
 
 	<p>
-		05/02/2019<br>We add the Other Page?!
+		09/02/2019<br>Like Song in Development ...
+	</p>
+
+	<p>
+		08/02/2019<br>Log Page Done .
 	</p>
 
 	<p>
 		07/02/2019<br>Log Page in Development ...
+	</p>
+
+	<p>
+		05/02/2019<br>We add the Other Page?!
 	</p>
 
 	<?php
