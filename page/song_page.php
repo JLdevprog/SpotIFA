@@ -1,3 +1,7 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPEhtml>
 
 <html lang="eng">
@@ -30,6 +34,7 @@
 
 	<?php
 
+
 	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 	$db_prt = mysqli_query($connect, 
@@ -60,8 +65,40 @@
 			INNER JOIN users ON likes.ref_user=users.ref_user
 			INNER JOIN songs ON likes.id_song=songs.id_song
 			INNER JOIN artists ON songs.id_artist=artists.id_artist
+
 			'
 		);
+
+	//Like Part
+
+	if($_SESSION){
+
+		$stor_iduser=$_SESSION['id'];
+
+		echo $_SESSION['id'];
+
+		while($data=mysqli_fetch_assoc($db_like)){
+
+				echo "<br>";
+
+			echo "<a class='button_alike' ><img src='/SpotIFA/library/heartbeat(1).png' height='35' width='35' ></a>";
+			
+	        echo "<a class='button' href='song_sheet.php?song=".
+	        $data['s_name']."'>".$data['s_name']."</a>";
+	        echo " By ";
+	        echo "<a class='button' href='artist_sheet.php?name=".
+	        $data['a_name']."'>".$data['a_name']."</a>";
+	        echo "<br><br>";
+	        echo "<hr>";
+
+		    }
+	}
+
+    else{
+		//echo "<a class='button_like' ><img src='/SpotIFA/library/heartbeat.png' height='35' width='35' ></a>";
+	}
+
+    mysqli_free_result($db_like);
 
 
 	while($data=mysqli_fetch_assoc($db_prt)){
@@ -87,17 +124,6 @@
 
     mysqli_free_result($db_prt);
 
-    while($data=mysqli_fetch_assoc($db_like)){
-    	?>
-			<pre>
-			<?php
-			print_r($data);
-			?>
-			</pre>
-			<?php
-    }
-
-    mysqli_free_result($db_like);
 
     mysqli_close($connect);
 
