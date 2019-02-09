@@ -19,22 +19,22 @@ session_start();
 <?php require "../menu/menu.html"; ?>
 
 
-
-<?php 
-
-
-
-print_r($_SESSION);
-
-if($_SESSION==NULL){
-
-
-	echo '<div id="content">
+<div id="content">
 
 		<header>
 			<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
 			<h3>log Page</h3>
 		</header>
+
+
+<?php 
+
+
+
+if($_SESSION==NULL){
+
+
+	echo '
 
 
 		<form action="profile_sheet.php" method="post">
@@ -66,12 +66,64 @@ if($_SESSION==NULL){
 
 else{
 
+	$stor_user=$_SESSION['user'];
+
+	$stor_pass=$_SESSION['pass'];
+
+	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+
+	$db_result=mysqli_query($connect, '
+			SELECT 
+				*
+			 FROM users
+			 WHERE username = "'.$stor_user.'" AND password = "'.$stor_pass.'"
+			 ');
+
+		
+		while($db_result_array=mysqli_fetch_assoc($db_result)){
+
+            /*
+			?>
+			<pre>
+			<?php
+			print_r($db_result_array);
+			?>
+			</pre>
+			<?php
+			*/
+
+
+			$_SESSION['user']=$stor_user;
+			$_SESSION['pass']=$stor_pass;
+			$_SESSION['id']=$db_result_array['ref_user'];
+
+
+			echo "Pseudo : "	.$_SESSION['user']."<br>";
+			echo "eM@il : "		.$db_result_array['mail']."<br>";
+			echo "address : "	.$db_result_array['address']."<br>";
+			echo "phone : "		.$db_result_array['phone']."<br>";
+			echo "Ref_User : "	.$_SESSION['id'];
+
+
+		}
+
+
+
+	mysqli_free_result($db_result);
+
+	mysqli_close($connect);
+
+	echo '<p>';
 	echo "You Al'Ready Log ?!";
+	echo '<br>';
 	echo "<a href='logout.php' >Logout</a>";
+	echo '</p>';
 
 	//header('location:"/profile_sheet.php"'); 
 
 }
+
+
 
 
 ?>
