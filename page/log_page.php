@@ -60,15 +60,22 @@ if($_SESSION==NULL){
 
 		<a id="register" href="register_page.php">Register</a>';
 
+		if ($_COOKIE) {
+			echo '<br> Log from cookie <a href="profile_sheet.php">Link</a>';
+		}
+
+		else{}
+
 	
 }
 
 
 else{
 
-	$stor_user=$_SESSION['user'];
 
+	$stor_user=$_SESSION['user'];
 	$stor_pass=$_SESSION['pass'];
+
 
 	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
