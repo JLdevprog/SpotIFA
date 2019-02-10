@@ -24,6 +24,10 @@
 	<h4>Welcome to the News:</h4>
 
 	<p>
+		10/02/2019<br>Cookie Log Implement .
+	</p>
+
+	<p>
 		09/02/2019<br>Like Song in Development ...
 	</p>
 
