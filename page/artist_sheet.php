@@ -15,7 +15,7 @@
 <div id="content">
 
 	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<img src="../library/SpotIFA_logo.png" width="180" height="60">
 		<h3>Artits Detail</h3>
 	</header>
 
@@ -47,7 +47,7 @@
 		$db_result_array['age']."</p>";
 
 		echo "<img class='pic_profil'
-			src='/SpotIFA/library/".$db_result_array['id_artist'].".jpg'>";
+			src='../library/".$db_result_array['id_artist'].".jpg'>";
 
 		echo "<hr>";
 

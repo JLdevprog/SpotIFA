@@ -15,7 +15,7 @@
 <div id="content">
 
 	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<img src="../library/SpotIFA_logo.png" width="180" height="60">
 		<h3>Register Form</h3>
 	</header>
 
@@ -23,7 +23,7 @@
 	<form action="register_sheet.php" method="post">
 
 		<div class="imgcontainer">
-		    <img src="/SpotIFA/library/register.png" height="80" width="80" >
+		    <img src="../library/register.png" height="80" width="80" >
 		 </div>
 
 		<label>Sign Up</label>
