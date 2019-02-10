@@ -15,12 +15,12 @@
 <div id="content">
 
 	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<img src="../library/SpotIFA_logo.png" width="180" height="60">
 		<<h3>Artists</h3>
 	</header>
 
 
-	<form class="search_bar" action="/SpotIFA/page/artist_sheet.php">
+	<form class="search_bar" action="../page/artist_sheet.php">
 	  <input type="search" id="search" name="name" placeholder="Name">
 	  <input type="submit" value="Submit">
 	</form>

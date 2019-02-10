@@ -19,11 +19,11 @@ session_start()
 <div id="content">
 
 	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<img src="../library/SpotIFA_logo.png" width="180" height="60">
 		<h3>Songs</h3>
 	</header>
 
-	<form action="/SpotIFA/page/song_sheet.php">
+	<form action="../page/song_sheet.php">
 	  <input type="search" id="search" name="song" placeholder="Title">
 	  <input type="submit" value="Submit">
 	</form>
@@ -69,33 +69,59 @@ session_start()
 			'
 		);
 
+
 	//Like Part
+
+	//echo $_SESSION['id'];
+	//echo  $_POST['add'];
+
+	if(isset($_POST['add']) && $_SESSION){
+   		mysqli_query($connect, 
+			'
+			INSERT INTO likes (ref_user, id_song)
+			VALUES ("'.$_SESSION['id'].'" , "'.$_POST['add'].'")
+			'
+		);
+   	}
+
+   	if(isset($_POST['del']) && $_SESSION){
+   		mysqli_query($connect, 
+			'
+   			DELETE FROM likes
+   			WHERE ref_user="'.$_SESSION['id'].'" AND id_song="'.$_POST['del'].'"
+   			'
+   		);
+   	}
 
 	if($_SESSION){
 
-		$stor_iduser=$_SESSION['id'];
-
-		echo $_SESSION['id'];
 
 		while($data=mysqli_fetch_assoc($db_like)){
 
+			if($_SESSION['id']==$data['like_ref_user']){
+
 				echo "<br>";
 
-			echo "<a class='button_alike' ><img src='/SpotIFA/library/heartbeat(1).png' height='35' width='35' ></a>";
-			
-	        echo "<a class='button' href='song_sheet.php?song=".
-	        $data['s_name']."'>".$data['s_name']."</a>";
-	        echo " By ";
-	        echo "<a class='button' href='artist_sheet.php?name=".
-	        $data['a_name']."'>".$data['a_name']."</a>";
-	        echo "<br><br>";
-	        echo "<hr>";
+				echo "<a class='button_alike' href=
+				'song_page.php?del=".$data['id_song']."'
+				><img src='../library/heartbeat(1).png' height='35' width='35' ></a>";
+				
+		        echo "<a class='button' href='song_sheet.php?song=".
+		        $data['s_name']."'>".$data['s_name']."</a>";
+		        echo " By ";
+		        echo "<a class='button' href='artist_sheet.php?name=".
+		        $data['a_name']."'>".$data['a_name']."</a>";
+		        echo "<br><br>";
+		        echo "<hr>";
 
 		    }
+
+	   	}
+
 	}
 
     else{
-		//echo "<a class='button_like' ><img src='/SpotIFA/library/heartbeat.png' height='35' width='35' ></a>";
+		//echo "<a class='button_like' ><img src='../library/heartbeat.png' height='35' width='35' ></a>";
 	}
 
     mysqli_free_result($db_like);
@@ -106,11 +132,13 @@ session_start()
 
 
 		if($data['id_song']){
-			echo "<a class='button_like' ><img src='/SpotIFA/library/heartbeat.png' height='35' width='35' ></a>";
+			echo "<a class='button_like' href=
+				'song_page.php?add=".$data['id_song']."'
+				><img src='../library/heartbeat.png' height='35' width='35' ></a>";
 		}
 
 		else{
-			echo "<a class='button_alike' ><img src='/SpotIFA/library/heartbeat(1).png' height='35' width='35' ></a>";
+			//echo "<a class='button_alike' ><img src='../library/heartbeat(1).png' height='35' width='35' ></a>";
 		}
 
         echo "<a class='button' href='song_sheet.php?song=".

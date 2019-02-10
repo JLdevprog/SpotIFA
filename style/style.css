@@ -96,13 +96,6 @@ li a.menu_bouton:hover {
 }
 
 .button_like:link, .button_like:visited {
-  background-color: rgb(80, 80, 120, 0.8);;
-  color: white;
-  padding: 25px 25px;
-  text-align: center; 
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 25px;
 }
 
 .button_like:hover, .button_like:active {
@@ -112,13 +105,6 @@ li a.menu_bouton:hover {
 }
 
 .button_alike:link, .button_alike:visited {
-  background-color: rgb(80, 80, 120, 0.8);;
-  color: white;
-  padding: 25px 25px;
-  text-align: center; 
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 25px;
 }
 
 .button_alike:hover, .button_alike:active {

@@ -15,7 +15,7 @@
 <div id="content">
 
 	<header>
-		<img src="/SpotIFA/library/SpotIFA_logo.png" width="180" height="60">
+		<img src="../library/SpotIFA_logo.png" width="180" height="60">
 		<h3>Album Detail</h3>
 	</header>
 
