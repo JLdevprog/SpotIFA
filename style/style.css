@@ -150,6 +150,11 @@ li a.menu_bouton:hover {
   border-radius: 250px;
 }
 
+.pic_album{
+  width: auto; 
+  height: 300px;
+}
+
 input[type=button], input[type=submit], input[type=reset] {
   background-color: rgb(80, 80, 120, 0.8);
   color: white;
