@@ -45,8 +45,13 @@
             echo "<a class='button' href='album_sheet.php?name=".
             $db_result_array['id_album']."'>".$db_result_array['name']."</a>";
 
+
+			echo "<br><img class='pic_album'
+				src='../library/".$db_result_array['name'].".jpg'>";
 		}
+
 	}
+
 
 		mysqli_free_result($db_result);
 ?>
