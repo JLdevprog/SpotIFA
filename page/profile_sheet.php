@@ -29,7 +29,7 @@ setcookie('pass', $cookie_pass, time() + (86400 * 30), "/"); // 86400 = 1 day
 <div id="content">
 
 	<header>
-		<img src="../library/SpotIFA_logo.png" width="500" height="auto" >
+		<img src="../library/spotifa_logo.png" width="500" height="auto" >
 		<h3>Profile</h3>
 		<hr>
 	</header>

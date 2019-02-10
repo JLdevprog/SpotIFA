@@ -22,7 +22,7 @@ session_start();
 <div id="content">
 
 		<header>
-			<img src="../library/SpotIFA_logo.png" width="180" height="60">
+			<img src="../library/spotifa_logo.png" width="180" height="60">
 			<h3>log Page</h3>
 		</header>
 

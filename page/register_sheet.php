@@ -21,7 +21,7 @@ session_start();
 <div id="content">
 
 	<header>
-		<img src="../library/SpotIFA_logo.png" width="500" height="auto" >
+		<img src="../library/spotifa_logo.png" width="500" height="auto" >
 		<h3>Registration</h3>
 		<hr>
 	</header>
