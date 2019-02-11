@@ -24,6 +24,10 @@
 	<h4>Welcome to the News:</h4>
 
 	<p>
+		11/02/2019<br>Payer Song Implement . <br>Playlist in Development .
+	</p>
+
+	<p>
 		10/02/2019<br>Cookie Log Implement .
 	</p>
 
