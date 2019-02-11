@@ -30,12 +30,58 @@ session_start();
 <?php 
 
 
+$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+
+
+$db_playlist = mysqli_query($connect,
+			'
+			SELECT 
+			playlists.id_playlist as id_playlist,
+			playlists.name as name,
+			playlists.creation_date as creation_date,
+			playlists.ref_user as ref_user
+
+			FROM playlists
+
+			INNER JOIN users ON playlists.ref_user=users.ref_user
+
+			'
+		);
+
+
 echo "<hr>";
 
 
+if($_SESSION){
+
+	while($data=mysqli_fetch_assoc($db_playlist)){
+
+			if($_SESSION['id']==$data['ref_user']){
+
+				echo "<br>";
+
+				/*?>
+				<pre>
+				<?php
+				print_r($data);
+				?>
+				</pre>
+				<?php*/
+
+				echo "<a class='button' href='playlist_sheet.php?playlist=".
+		        $data['id_playlist']."'>".$data['name']."</a>";
+
+		        echo "<br><br><hr>";
+
+		    }
+
+   	}
+
+	echo "<hr><br><br>";	
+
+}
 
 
-echo "<hr>";
 
 if($_SESSION==NULL){
 
@@ -109,6 +155,11 @@ else{
 			$_SESSION['user']=$stor_user;
 			$_SESSION['pass']=$stor_pass;
 			$_SESSION['id']=$db_result_array['ref_user'];
+
+
+			echo '<div class="imgcontainer">
+			    	<img src="../library/logerlog.png" height="80" width="80" >
+				</div><br>';
 
 
 			echo "Pseudo : "	.$_SESSION['user']."<br>";
