@@ -49,13 +49,16 @@
 		
 		while($db_result_array=mysqli_fetch_assoc($db_result)){
 
-			echo "<p class='text'> Song Name : ".$db_result_array['s_name'].
-				"<br>Release Date : ".$db_result_array['r_date']." . </p>";
+			echo "<p class='text'> Song Name : ".$db_result_array['s_name']."
+				<br>Release Date : ".$db_result_array['r_date']." . </p>";
 
 			echo "<p class='text'>By</p>";
 			
 			echo "<a class='button' href='artist_sheet.php?name=".$db_result_array['a_name']."'>".$db_result_array['a_name']."</a> <br>";
 
+			echo "<audio controls>
+					<source src='../library/store/".$db_result_array['s_name'].".mp3' type='audio/mpeg'><br>
+				</audio>";
 
 
 /*
