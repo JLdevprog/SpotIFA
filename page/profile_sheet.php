@@ -2,6 +2,14 @@
 
 session_start();
 
+if(isset($_POST['user_log'])){
+$cookie_user=$_POST['user_log'];
+$cookie_pass=$_POST['psw_log'];
+
+setcookie('user', $cookie_user, time() + (86400 * 30), "/"); // 86400 = 1 day
+setcookie('pass', $cookie_pass, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
+
 ?>
 
 <!DOCTYPEhtml>
@@ -21,7 +29,7 @@ session_start();
 <div id="content">
 
 	<header>
-		<img src="../library/SpotIFA_logo.png" width="500" height="auto" >
+		<img src="../library/spotifa_logo.png" width="500" height="auto" >
 		<h3>Profile</h3>
 		<hr>
 	</header>
@@ -33,8 +41,7 @@ session_start();
 	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 
-	if (isset($_POST['user_log']) && isset($_POST['psw_log'])
-		||$_SESSION['user']&&$_SESSION['pass']){
+	if (isset($_POST['user_log']) && isset($_POST['psw_log'])){
 
 		$stor_user=strip_tags($_POST['user_log']);
 		$stor_user=addslashes($stor_user);
@@ -69,17 +76,68 @@ session_start();
 			$_SESSION['id']=$db_result_array['ref_user'];
 
 
-			echo "Pseudo : "	.$_SESSION['user']."<br>";
+			echo "Pseudo : "	.$db_result_array['username']."<br>";
 			echo "eM@il : "		.$db_result_array['mail']."<br>";
 			echo "address : "	.$db_result_array['address']."<br>";
 			echo "phone : "		.$db_result_array['phone']."<br>";
-			echo "Ref_User : "	.$_SESSION['id'];
+			echo "Ref_User : "	.$db_result_array['ref_user'];
+
+			$cookie_user=$_SESSION['user'];
+			$cookie_pass=$_SESSION['pass'];
+
+			setcookie('user', $cookie_user, time() + (86400 * 30), "/"); // 86400 = 1 day
+			setcookie('pass', $cookie_pass, time() + (86400 * 30), "/"); // 86400 = 1 day
 
 
 		}
 
-
 	} 
+
+
+
+	elseif($_COOKIE['user'] && $_COOKIE['pass']){
+
+
+	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+
+	$db_result=mysqli_query($connect, '
+			SELECT 
+				*
+			 FROM users
+			 WHERE username = "'.$_COOKIE['user'].'" AND password = "'.$_COOKIE['pass'].'"
+			 ');
+
+		
+		while($db_result_array=mysqli_fetch_assoc($db_result)){
+
+            /*
+			?>
+			<pre>
+			<?php
+			print_r($db_result_array);
+			?>
+			</pre>
+			<?php
+			*/
+
+
+			$_SESSION['user']=$_COOKIE['user'];
+			$_SESSION['pass']=$_COOKIE['pass'];
+			$_SESSION['id']=$db_result_array['ref_user'];
+
+
+			echo "Pseudo : "	.$db_result_array['username']."<br>";
+			echo "eM@il : "		.$db_result_array['mail']."<br>";
+			echo "address : "	.$db_result_array['address']."<br>";
+			echo "phone : "		.$db_result_array['phone']."<br>";
+			echo "Ref_User : "	.$db_result_array['ref_user'];
+
+
+		}
+	}
+
+
+	
 
 	else {
 		

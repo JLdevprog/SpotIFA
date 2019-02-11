@@ -22,7 +22,7 @@ session_start();
 <div id="content">
 
 		<header>
-			<img src="../library/SpotIFA_logo.png" width="180" height="60">
+			<img src="../library/spotifa_logo.png" width="180" height="60">
 			<h3>log Page</h3>
 		</header>
 
@@ -60,15 +60,22 @@ if($_SESSION==NULL){
 
 		<a id="register" href="register_page.php">Register</a>';
 
+		if ($_COOKIE) {
+			echo '<br> Log from cookie <a href="profile_sheet.php">Link</a>';
+		}
+
+		else{}
+
 	
 }
 
 
 else{
 
-	$stor_user=$_SESSION['user'];
 
+	$stor_user=$_SESSION['user'];
 	$stor_pass=$_SESSION['pass'];
+
 
 	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 

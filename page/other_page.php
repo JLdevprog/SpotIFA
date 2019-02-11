@@ -15,13 +15,17 @@
 <div id="content">
 
 	<header>
-		<img src="../library/SpotIFA_logo.png" width="500" height="auto" >
+		<img src="../library/spotifa_logo.png" width="500" height="auto" >
 		<h3>Other</h3>
 		<hr>
 	</header>
 
 
 	<h4>Welcome to the News:</h4>
+
+	<p>
+		10/02/2019<br>Cookie Log Implement .
+	</p>
 
 	<p>
 		09/02/2019<br>Like Song in Development ...
