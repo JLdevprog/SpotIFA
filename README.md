@@ -12,6 +12,8 @@ But for some reason of Study Exercise Report the second part will be in French.
 This Project will be Develop for Study purpose in different code language "HTML/CSS/PHP/SQL"
 and is Free of Rights for no commercial use.
 
+(All Contents as sample Included for Concern Artists Copyright required License to be Use)
+
 
 
 Projet IFA 31/01/2019 Simon
