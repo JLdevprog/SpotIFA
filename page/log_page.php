@@ -105,6 +105,10 @@ else{
 			$_SESSION['id']=$db_result_array['ref_user'];
 
 
+			echo '<div class="imgcontainer">
+			    	<img src="../library/logerlog.png" height="80" width="80" >
+				</div><br>';
+
 			echo "Pseudo : "	.$_SESSION['user']."<br>";
 			echo "eM@il : "		.$db_result_array['mail']."<br>";
 			echo "address : "	.$db_result_array['address']."<br>";
@@ -121,7 +125,7 @@ else{
 	mysqli_close($connect);
 
 	echo '<p>';
-	echo "You Al'Ready Log ?!";
+	echo "U r Log ?!";
 	echo '<br>';
 	echo "<a href='logout.php' >Logout</a>";
 	echo '</p>';

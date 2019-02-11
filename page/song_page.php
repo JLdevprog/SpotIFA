@@ -118,6 +118,8 @@ session_start()
 
 	   	}
 
+		echo "<hr>";
+
 	}
 
     else{
