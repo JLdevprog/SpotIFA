@@ -104,6 +104,15 @@ li a.menu_bouton:hover {
   border-radius: 80px;
 }
 
+.button_delete{
+}
+
+.button_delete:hover, .button_delete:active {
+  background-color: red;
+  padding: 25px 10px;
+  border-radius: 80px;
+}
+
 .button_alike:link, .button_alike:visited {
 }
 

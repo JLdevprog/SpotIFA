@@ -79,8 +79,25 @@ if($_SESSION){
 
 	echo "<hr><br><br>";	
 
-}
+	echo "Add Playlist : ";
 
+	echo '<form action="create_page.php" method="post">
+
+			<label>Sign In</label>
+
+			<div class="container">
+			    <input type="text" placeholder="Name" name="playlist" required>
+			</div>
+
+			<div>
+		    	<button type="submit">Add</button>
+		  	</div>
+		</form>';
+
+	echo "<br><br><hr>";
+
+
+}
 
 
 if($_SESSION==NULL){

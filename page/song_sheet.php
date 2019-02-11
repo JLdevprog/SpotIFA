@@ -101,6 +101,13 @@
 
 		}
 
+		/*echo "<br><br><br>
+				Add<br>
+				<a class='button' href='song_sheet.php?name="
+				.$stor_get."'>".$stor_get."
+				</a> <br>
+			<br>";*/
+
 
 		mysqli_free_result($db_result);
 

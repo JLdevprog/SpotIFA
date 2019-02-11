@@ -19,8 +19,6 @@
 		<h3>Playlist Detail</h3>
 	</header>
 
-	<hr>
-
 	<p>
 
 	<?php
@@ -73,7 +71,7 @@
 
 		WHERE playlists.id_playlist = "'.$stor_get.'"
 
-		 ');
+		');
 
 		
 		while($data=mysqli_fetch_assoc($db_playlist)){
@@ -89,7 +87,16 @@
 			echo "<br><a class='button' href='playlist_sheet.php?playlist=".
 		        $data['id_playlist']."'>".$data['name']."</a>";
 
-		    echo "<br><br><hr><hr>";
+	        echo "<br>".$data['creation_date']."<br>";
+
+
+	        echo "<br>Delete<br>";
+
+			echo "<a class='button_delete' href='delete_page.php?delete=
+			".$data['id_playlist']."'><img src='../library/delete.png' height='50' width='50' ></a> <br>";
+
+
+		    echo "<br><hr>";
 
 		    while($data=mysqli_fetch_assoc($db_playlist_content)){
 
@@ -107,6 +114,7 @@
 		    }
 
 		    echo "<br><hr>";
+
 
 		}
 
