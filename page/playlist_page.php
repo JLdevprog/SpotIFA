@@ -83,8 +83,6 @@ if($_SESSION){
 
 	echo '<form action="create_page.php" method="post">
 
-			<label>Sign In</label>
-
 			<div class="container">
 			    <input type="text" placeholder="Name" name="playlist" required>
 			</div>
