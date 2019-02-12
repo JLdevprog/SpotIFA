@@ -103,7 +103,7 @@ session_start()
 				echo "<br>";
 
 				echo "<a class='button_alike' href=
-				'song_page.php?del=".$data['id_song']."'
+				'like_page.php?del=".$data['id_song']."'
 				><img src='../library/heartbeat(1).png' height='35' width='35' ></a>";
 				
 		        echo "<a class='button' href='song_sheet.php?song=".
@@ -135,7 +135,7 @@ session_start()
 
 		if($data['id_song']){
 			echo "<a class='button_like' href=
-				'song_page.php?add=".$data['id_song']."'
+				'like_page.php?add=".$data['id_song']."'
 				><img src='../library/heartbeat.png' height='35' width='35' ></a>";
 		}
 
