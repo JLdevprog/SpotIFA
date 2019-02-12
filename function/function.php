@@ -1,12 +1,12 @@
 <?php
 
 function db_connect(){
-			$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+			$connect = mysqli_connect('localhost','root','Admin.123', 'SpotIFA');
 			return $connect;
 	}
 
 function db_connect_pdo(){
-	$db_spot = new PDO('mysql:host=localhost;dbname=SpotIFA','root','',
+	$db_spot = new PDO('mysql:host=localhost;dbname=SpotIFA','root','Admin.123',
 				array(PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION));
 	return $db_spot;
 }

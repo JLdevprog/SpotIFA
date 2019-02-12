@@ -61,7 +61,6 @@
 
 	<?php
 
-	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 	if (isset($_GET['name'])){
 

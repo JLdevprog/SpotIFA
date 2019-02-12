@@ -2,14 +2,12 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Feb 11, 2019 at 06:05 AM
+-- Host: localhost:8889
+-- Generation Time: Feb 12, 2019 at 05:36 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `spotifa`
+-- Database: `SpotIFA`
 --
 
 -- --------------------------------------------------------
@@ -28,15 +26,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `albums`
 --
 
-DROP TABLE IF EXISTS `albums`;
-CREATE TABLE IF NOT EXISTS `albums` (
-  `id_album` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `albums` (
+  `id_album` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `release_date` date NOT NULL,
-  `id_artist` int(11) NOT NULL,
-  PRIMARY KEY (`id_album`),
-  KEY `IDARTISTALBUM` (`id_artist`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `id_artist` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `albums`
@@ -54,14 +49,12 @@ INSERT INTO `albums` (`id_album`, `name`, `release_date`, `id_artist`) VALUES
 -- Table structure for table `artists`
 --
 
-DROP TABLE IF EXISTS `artists`;
-CREATE TABLE IF NOT EXISTS `artists` (
-  `id_artist` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `artists` (
+  `id_artist` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `gender` varchar(50) NOT NULL,
-  `age` date NOT NULL,
-  PRIMARY KEY (`id_artist`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `age` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `artists`
@@ -79,8 +72,7 @@ INSERT INTO `artists` (`id_artist`, `name`, `gender`, `age`) VALUES
 -- Table structure for table `likes`
 --
 
-DROP TABLE IF EXISTS `likes`;
-CREATE TABLE IF NOT EXISTS `likes` (
+CREATE TABLE `likes` (
   `ref_user` int(11) NOT NULL,
   `id_song` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -93,7 +85,8 @@ INSERT INTO `likes` (`ref_user`, `id_song`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
-(1, 5);
+(1, 5),
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -101,15 +94,19 @@ INSERT INTO `likes` (`ref_user`, `id_song`) VALUES
 -- Table structure for table `playlists`
 --
 
-DROP TABLE IF EXISTS `playlists`;
-CREATE TABLE IF NOT EXISTS `playlists` (
-  `id_playlist` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `playlists` (
+  `id_playlist` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `creation_date` date NOT NULL,
-  `#ref_user` int(11) NOT NULL,
-  PRIMARY KEY (`id_playlist`),
-  KEY `REFUSER` (`#ref_user`)
+  `ref_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `playlists`
+--
+
+INSERT INTO `playlists` (`id_playlist`, `name`, `creation_date`, `ref_user`) VALUES
+(1, 'My Playlist', '2019-02-12', 1);
 
 -- --------------------------------------------------------
 
@@ -117,13 +114,19 @@ CREATE TABLE IF NOT EXISTS `playlists` (
 -- Table structure for table `playlist_content`
 --
 
-DROP TABLE IF EXISTS `playlist_content`;
-CREATE TABLE IF NOT EXISTS `playlist_content` (
-  `#id_playlist` int(11) NOT NULL,
-  `#id_song` int(11) NOT NULL,
-  KEY `IDPLAYLIST` (`#id_playlist`),
-  KEY `IDSONG` (`#id_song`)
+CREATE TABLE `playlist_content` (
+  `id_playlist` int(11) NOT NULL,
+  `id_song` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `playlist_content`
+--
+
+INSERT INTO `playlist_content` (`id_playlist`, `id_song`) VALUES
+(1, 2),
+(1, 5),
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -131,17 +134,13 @@ CREATE TABLE IF NOT EXISTS `playlist_content` (
 -- Table structure for table `songs`
 --
 
-DROP TABLE IF EXISTS `songs`;
-CREATE TABLE IF NOT EXISTS `songs` (
-  `id_song` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `songs` (
+  `id_song` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `release_date` date NOT NULL,
   `id_artist` int(11) DEFAULT NULL,
-  `id_album` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_song`),
-  KEY `IDALBUM` (`id_album`),
-  KEY `IDARTIST` (`id_artist`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+  `id_album` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `songs`
@@ -207,16 +206,14 @@ INSERT INTO `songs` (`id_song`, `name`, `release_date`, `id_artist`, `id_album`)
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `ref_user` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `ref_user` int(11) NOT NULL,
   `username` varchar(80) NOT NULL,
   `mail` varchar(250) NOT NULL,
   `address` varchar(250) NOT NULL,
   `phone` int(11) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  PRIMARY KEY (`ref_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `password` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -229,6 +226,85 @@ INSERT INTO `users` (`ref_user`, `username`, `mail`, `address`, `phone`, `passwo
 (4, 'Soan', 'S@mail.ae', 'Dubai', 13032013, '123'),
 (5, 'John', 'legend@mail.com', 'USA', 9601234, 'Admin.123'),
 (6, 'Johann.L', 'J.L.DevProg@gmail.com', 'Metz', 387000000, '789');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `albums`
+--
+ALTER TABLE `albums`
+  ADD PRIMARY KEY (`id_album`),
+  ADD KEY `IDARTISTALBUM` (`id_artist`);
+
+--
+-- Indexes for table `artists`
+--
+ALTER TABLE `artists`
+  ADD PRIMARY KEY (`id_artist`);
+
+--
+-- Indexes for table `playlists`
+--
+ALTER TABLE `playlists`
+  ADD PRIMARY KEY (`id_playlist`),
+  ADD KEY `REFUSER` (`ref_user`);
+
+--
+-- Indexes for table `playlist_content`
+--
+ALTER TABLE `playlist_content`
+  ADD KEY `IDPLAYLIST` (`id_playlist`),
+  ADD KEY `IDSONG` (`id_song`);
+
+--
+-- Indexes for table `songs`
+--
+ALTER TABLE `songs`
+  ADD PRIMARY KEY (`id_song`),
+  ADD KEY `IDALBUM` (`id_album`),
+  ADD KEY `IDARTIST` (`id_artist`) USING BTREE;
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ref_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `albums`
+--
+ALTER TABLE `albums`
+  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `artists`
+--
+ALTER TABLE `artists`
+  MODIFY `id_artist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `playlists`
+--
+ALTER TABLE `playlists`
+  MODIFY `id_playlist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `songs`
+--
+ALTER TABLE `songs`
+  MODIFY `id_song` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `ref_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -244,21 +320,20 @@ ALTER TABLE `albums`
 -- Constraints for table `playlists`
 --
 ALTER TABLE `playlists`
-  ADD CONSTRAINT `REFUSER` FOREIGN KEY (`#ref_user`) REFERENCES `users` (`ref_user`);
+  ADD CONSTRAINT `REFUSER` FOREIGN KEY (`ref_user`) REFERENCES `users` (`ref_user`);
 
 --
 -- Constraints for table `playlist_content`
 --
 ALTER TABLE `playlist_content`
-  ADD CONSTRAINT `IDPLAYLIST` FOREIGN KEY (`#id_playlist`) REFERENCES `playlists` (`id_playlist`),
-  ADD CONSTRAINT `IDSONG` FOREIGN KEY (`#id_song`) REFERENCES `playlists` (`id_playlist`);
+  ADD CONSTRAINT `IDPLAYLIST` FOREIGN KEY (`id_playlist`) REFERENCES `playlists` (`id_playlist`),
+  ADD CONSTRAINT `IDSONG` FOREIGN KEY (`id_song`) REFERENCES `songs` (`id_song`);
 
 --
 -- Constraints for table `songs`
 --
 ALTER TABLE `songs`
   ADD CONSTRAINT `IDALBUM` FOREIGN KEY (`id_album`) REFERENCES `albums` (`id_album`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
