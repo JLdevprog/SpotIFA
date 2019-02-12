@@ -4,7 +4,7 @@
 	<ul>
 		<li><div id="menu_logo" href=""><img src="" height="" width="" ></div></li>
 		<li><a id="menu_home" class="menu_home" href="./index.php">
-			<img src="../library/logo.png" height="50" width="50" ></a></li>
+			<img src="./library/logo.png" height="50" width="50" ></a></li>
 		<li><a class="menu_bouton" href="./page/artist_page.php">Artist</a></li>
 		<li><a class="menu_bouton" href="./page/album_page.php">Album</a></li>
 		<li><a class="menu_bouton" href="./page/song_page.php">Song</a></li>
