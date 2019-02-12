@@ -24,7 +24,9 @@
 
 	<?php
 
-	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+
+	include "../function/function.php";
+
 
 	if (isset($_GET['name'])){
 

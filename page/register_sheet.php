@@ -30,18 +30,17 @@ session_start();
 	<?php
 
 
+	include "../function/function.php";
+
+
 
 	if($_POST){
-
 
 	$user=$_POST['username'];
 	$email=$_POST['email'];
 	$address=$_POST['address'];
 	$phone=$_POST['phone'];
 	$password=$_POST['password'];
-
-
-		$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 
 		$stor_user=strip_tags($_POST['username']);

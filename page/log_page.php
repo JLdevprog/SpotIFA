@@ -30,6 +30,9 @@ session_start();
 <?php 
 
 
+include "../function/function.php";
+
+
 
 if($_SESSION==NULL){
 
@@ -76,8 +79,6 @@ else{
 	$stor_user=$_SESSION['user'];
 	$stor_pass=$_SESSION['pass'];
 
-
-	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 	$db_result=mysqli_query($connect, '
 			SELECT 

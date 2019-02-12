@@ -38,7 +38,8 @@ setcookie('pass', $cookie_pass, time() + (86400 * 30), "/"); // 86400 = 1 day
 	<?php
 
 
-	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+	include "../function/function.php";
+
 
 
 	if (isset($_POST['user_log']) && isset($_POST['psw_log'])){
@@ -98,8 +99,6 @@ setcookie('pass', $cookie_pass, time() + (86400 * 30), "/"); // 86400 = 1 day
 	elseif($_COOKIE['user'] && $_COOKIE['pass']){
 
 
-	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
-
 	$db_result=mysqli_query($connect, '
 			SELECT 
 				*
@@ -149,48 +148,7 @@ setcookie('pass', $cookie_pass, time() + (86400 * 30), "/"); // 86400 = 1 day
 	mysqli_close($connect);
 
 
-
-/*
-	$user_log=0;
-	$psw_log=0;
-
-
-
-	if($_POST||$_SESSION){
-
-		$user_log=$_POST['user_log'];
-		$psw_log=$_POST['psw_log'];
-
-
-			$connect = mysqli_connect('localhost','root','', 'SpotIFA');
-
-
-			$sql_l=mysqli_query($connect, "
-			SELECT
-			ref_user, username, password,
-			mail, address, phone, 
-			FROM
-			users
-			WHERE username='".$user_log."' "AND" password='".$psw_log."'
-			");
-
-
-			while($db_log_array=mysqli_fetch_assoc($sql_l)){
-
-				echo "test";
-
-			}
-
-
-
-	}
-
-	else{
-		echo "Error?!";
-	}
-
-	mysqli_close($connect);
-*/
+		
 	?>
 
 

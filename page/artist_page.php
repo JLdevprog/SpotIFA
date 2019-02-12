@@ -32,8 +32,9 @@
 
 	<?php
 
-	$db_spot = new PDO('mysql:host=localhost;dbname=SpotIFA','root',''/* or 'root'*/,
-                        array(PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION));
+
+	include "../function/function.php";
+
 
 	$db_prt = $db_spot->query(
 		'SELECT name 

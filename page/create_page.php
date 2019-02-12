@@ -2,6 +2,9 @@
 
 session_start();
 
+include "../function/function.php";
+
+
 echo "<a href='playlist_page.php' >Return</a><br>";
 
 
@@ -10,9 +13,6 @@ if(isset($_POST['playlist'])){
 		echo $_POST['playlist']."<br>";
 
 		$playlist_name=$_POST['playlist'];
-
-
-		$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 
 		$sql_w=

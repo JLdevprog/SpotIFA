@@ -2,6 +2,9 @@
 
 session_start();
 
+include "../function/function.php";
+
+
 echo "<a href='song_page.php' >Return to Songs</a><br>";
 
 
@@ -10,10 +13,6 @@ if(isset($_GET)){
 	if(isset($_GET['add'])){
 
 		$like_id=$_GET['add'];
-
-
-		$connect = mysqli_connect('localhost','root','', 'SpotIFA');
-
 
 		$sql_w=
 			"
@@ -42,8 +41,6 @@ if(isset($_GET)){
 
 		$unlike_id=$_GET['del'];
 
-		$connect = mysqli_connect('localhost','root','', 'SpotIFA');
-
 		$sql_e=
 			"
 			DELETE FROM likes 
@@ -70,9 +67,6 @@ if(isset($_GET)){
 	elseif(isset($_GET['add_playlist'])){
 
 		echo "Or<br>Add to : ";
-
-		$connect = mysqli_connect('localhost','root','', 'SpotIFA');
-
 
 			$db_playlist = mysqli_query($connect,
 						'

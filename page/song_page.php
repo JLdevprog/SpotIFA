@@ -1,5 +1,7 @@
 <?php
+
 session_start()
+
 ?>
 
 <!DOCTYPEhtml>
@@ -35,7 +37,9 @@ session_start()
 	<?php
 
 
-	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+	include "../function/function.php";
+
+
 
 	$db_prt = mysqli_query($connect, 
 		'SELECT 

@@ -30,7 +30,8 @@ session_start();
 <?php 
 
 
-$connect = mysqli_connect('localhost','root','', 'SpotIFA');
+include "../function/function.php";
+
 
 
 $db_playlist = mysqli_query($connect,
@@ -139,12 +140,9 @@ if($_SESSION==NULL){
 
 else{
 
-
 	$stor_user=$_SESSION['user'];
 	$stor_pass=$_SESSION['pass'];
 
-
-	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 	$db_result=mysqli_query($connect, '
 			SELECT 

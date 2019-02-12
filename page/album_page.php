@@ -10,7 +10,13 @@
 
 <body>
 
-<?php require "../menu/menu.html"; ?>
+<?php 
+
+require "../menu/menu.html";
+
+include "../function/function.php"; 
+
+?>
 
 <div id="content">
 
@@ -24,11 +30,6 @@
 
 
 	<?php
-
-
-
-
-	$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 
 	$db_result_song=mysqli_query($connect,

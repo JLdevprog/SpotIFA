@@ -2,14 +2,15 @@
 
 session_start();
 
+include "../function/function.php";
+
+
 echo "<a href='playlist_page.php' >Return</a><br>";
 
 
 if(isset($_GET['delete'])){
 
 		$playlist_delete=$_GET['delete'];
-
-		$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 		$sql_e=
 			"
@@ -41,8 +42,6 @@ if(isset($_GET['delete_song'])){
 
 		$playlist_song_delete=$_GET['delete_song'];
 		$id_playlist=$_GET['playlist'];
-
-		$connect = mysqli_connect('localhost','root','', 'SpotIFA');
 
 		$sql_e=
 			"
