@@ -105,6 +105,10 @@ session_start()
 				echo "<a class='button_alike' href=
 				'like_page.php?del=".$data['id_song']."'
 				><img src='../library/heartbeat(1).png' height='35' width='35' ></a>";
+
+				echo "<a class='button_alike' href=
+				'playlist_add_page.php?add_playlist=".$data['id_song']."'
+				><img src='../library/playlist.png' height='35' width='35' ></a>";
 				
 		        echo "<a class='button' href='song_sheet.php?song=".
 		        $data['s_name']."'>".$data['s_name']."</a>";

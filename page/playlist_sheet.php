@@ -109,7 +109,12 @@
 				<?php*/
 
 				echo "<br><a class='button' href='song_sheet.php?song=".
-		        $data['name']."'>".$data['name']."</a><br>";
+		        $data['name']."'>".$data['name']."</a>";
+
+				echo '<a class="button_delete" href="delete_page.php?delete_song='
+							.$data['id_song'].
+							'&playlist='.$data['id_playlist'].
+					        '"><img src="../library/delete.png" height="25" width="25" ></a><br>';
 
 		    }
 
