@@ -10,7 +10,7 @@
 
 <body>
 
-<?php require "menu/menu.html"; ?>
+<?php require "./menu/menu_index.php"; ?>
 
 <div id="content">
 
