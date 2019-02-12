@@ -24,7 +24,11 @@
 	<h4>Welcome to the News:</h4>
 
 	<p>
-		11/02/2019<br>Payer Song Implement . <br>Playlist in Development .
+		12/02/2019<br>User Playlist / Song Implement.
+	</p>
+
+	<p>
+		11/02/2019<br>Song Implement . <br>Playlist in Development .
 	</p>
 
 	<p>
