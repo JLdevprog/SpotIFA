@@ -20,6 +20,7 @@ setcookie('pass', $cookie_pass, time() + (86400 * 30), "/"); // 86400 = 1 day
 	<meta charset="utf-8">
 	<title>SpotIFA</title>
 	<link rel="stylesheet" href="../style/style.css">
+	<link rel="icon" href="../library/logo.png" type="image/png" sizes="18x18">
 </head>
 
 <body>
