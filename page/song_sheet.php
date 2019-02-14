@@ -6,6 +6,7 @@
 	<meta charset="utf-8">
 	<title>SpotIFA</title>
 	<link rel="stylesheet" href="../style/style.css">
+	<link rel="icon" href="../library/logo.png" type="image/png" sizes="18x18">
 </head>
 
 <body>
@@ -62,7 +63,7 @@
 			echo "<audio controls>
 					<source src='../library/store/".$db_result_array['s_name'].".mp3' type='audio/mpeg'><br>
 				</audio>";
-
+				
 
 /*
 			?>
